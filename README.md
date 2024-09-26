@@ -19,9 +19,6 @@ Repositorio público para el desarrollo del primer parcial de la asignatura de P
    ```bash
    npm install
    ```
-   ```
-   npm install react-bootstrap bootstrap
-   ```
 4. Iniciar la aplicación:
    ```bash
    npm start
