@@ -1,52 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-
-// Mock del servicio para obtener los datos del usuario y sus sesiones
-const mockUserData = {
-  name: "Camilo Escobar",
-  profilePic: "https://via.placeholder.com/100", // Imagen de perfil mock
-  bestTimes: {
-    running: "1:05",
-    swimming: "1:05",
-    cycling: "1:05",
-  }
-};
-
-const mockSessions = {
-  cycling: Array(10).fill({
-    title: "Cycling Session",
-    description: "Recorrido alrededor de la bahía de Cartagena",
-    distance: "40k",
-    time: "2:10h",
-    city: "Cartagena",
-    imageUrl: "https://via.placeholder.com/300x200?text=Cycling+Session"
-  }),
-  running: Array(10).fill({
-    title: "Running Session",
-    description: "Recorrido alrededor de la bahía de Cartagena",
-    distance: "10k",
-    time: "1:05h",
-    city: "Cartagena",
-    imageUrl: "https://via.placeholder.com/300x200?text=Running+Session"
-  }),
-  swimming: Array(10).fill({
-    title: "Swimming Session",
-    description: "Recorrido alrededor de la bahía de Cartagena",
-    distance: "5k",
-    time: "1:00h",
-    city: "Cartagena",
-    imageUrl: "https://via.placeholder.com/300x200?text=Swimming+Session"
-  })
-};
+import data from '../data/data.json';
 
 const Home = () => {
   const [user, setUser] = useState({});
-  const [sessions, setSessions] = useState({});
+  const [bestTimes, setBestTimes] = useState({});
+
+  // Función para convertir el tiempo a minutos
+  const convertTimeToMinutes = (time) => {
+    const [hours, minutes] = time.split(":");
+    return parseInt(hours) * 60 + parseInt(minutes.replace("h", ""));
+  };
+
+  // Función para calcular los mejores tiempos en cada categoría
+  const calculateBestTimes = (sessions) => {
+    const bestCycling = Math.min(...sessions.cycling.map((session) => convertTimeToMinutes(session.time)));
+    const bestRunning = Math.min(...sessions.running.map((session) => convertTimeToMinutes(session.time)));
+    const bestSwimming = Math.min(...sessions.swimming.map((session) => convertTimeToMinutes(session.time)));
+
+    return {
+      cycling: `${Math.floor(bestCycling / 60)}:${bestCycling % 60}h`,
+      running: `${Math.floor(bestRunning / 60)}:${bestRunning % 60}h`,
+      swimming: `${Math.floor(bestSwimming / 60)}:${bestSwimming % 60}h`
+    };
+  };
 
   useEffect(() => {
-    // Simulación de llamada a la API mock para cargar los datos
-    setUser(mockUserData);
-    setSessions(mockSessions);
+    // Consumimos los datos desde el archivo JSON y calculamos los mejores tiempos
+    setUser(data.user);
+    setBestTimes(calculateBestTimes(data.user.sessions));
   }, []);
 
   const renderCards = (sessionData) => {
@@ -87,15 +69,15 @@ const Home = () => {
         <Row className="mb-4">
           <Col>
             <h3 className="text-center">Cycling</h3>
-            {renderCards(sessions.cycling)}
+            {renderCards(user.sessions?.cycling || [])}
           </Col>
           <Col>
             <h3 className="text-center">Running</h3>
-            {renderCards(sessions.running)}
+            {renderCards(user.sessions?.running || [])}
           </Col>
           <Col>
             <h3 className="text-center">Swimming</h3>
-            {renderCards(sessions.swimming)}
+            {renderCards(user.sessions?.swimming || [])}
           </Col>
         </Row>
       </div>
@@ -113,13 +95,13 @@ const Home = () => {
             <strong>{user.name}</strong>
           </Col>
           <Col className="text-center">
-            <p><strong>Correr:</strong> {user.bestTimes?.running}</p>
+            <p><strong>Correr:</strong> {bestTimes?.running}</p>
           </Col>
           <Col className="text-center">
-            <p><strong>Nadar:</strong> {user.bestTimes?.swimming}</p>
+            <p><strong>Nadar:</strong> {bestTimes?.swimming}</p>
           </Col>
           <Col className="text-center">
-            <p><strong>Ciclismo:</strong> {user.bestTimes?.cycling}</p>
+            <p><strong>Ciclismo:</strong> {bestTimes?.cycling}</p>
           </Col>
         </Row>
       </footer>
