@@ -1,6 +1,6 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Login from "./components/Login";
-//import Home from "./_components/home";
+import Home from "./components/Home";
 
 const Layout = () => {
   return (
@@ -20,6 +20,10 @@ export const router = createBrowserRouter([
                 path: "/",
                 element: <Login />
             },
+            {
+                path: "/home",
+                element: <Home />
+            }
         ]
 
     }
