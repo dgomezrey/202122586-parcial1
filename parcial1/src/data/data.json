@@ -1,0 +1,134 @@
+{
+    "user": {
+      "name": "Camilo Escobar",
+      "profilePic": "https://via.placeholder.com/100",
+      "sessions": {
+        "cycling": [
+          {
+            "title": "Cycling Session",
+            "description": "Ruta en las montañas de Bogotá",
+            "distance": "40k",
+            "time": "2:15h",
+            "city": "Bogotá",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Cycling+Session+1"
+          },
+          {
+            "title": "Cycling Session",
+            "description": "Paseo alrededor de la bahía de Cartagena",
+            "distance": "45k",
+            "time": "2:05h",
+            "city": "Cartagena",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Cycling+Session+2"
+          },
+          {
+            "title": "Cycling Session",
+            "description": "Ruta por las colinas de Medellín",
+            "distance": "50k",
+            "time": "2:30h",
+            "city": "Medellín",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Cycling+Session+3"
+          },
+          {
+            "title": "Cycling Session",
+            "description": "Circuito en el parque Simón Bolívar",
+            "distance": "30k",
+            "time": "1:45h",
+            "city": "Bogotá",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Cycling+Session+4"
+          },
+          {
+            "title": "Cycling Session",
+            "description": "Vuelta en la costa de Santa Marta",
+            "distance": "55k",
+            "time": "2:50h",
+            "city": "Santa Marta",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Cycling+Session+5"
+          }
+        ],
+        "running": [
+          {
+            "title": "Running Session",
+            "description": "Carrera en el parque de la 93",
+            "distance": "10k",
+            "time": "1:05h",
+            "city": "Bogotá",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Running+Session+1"
+          },
+          {
+            "title": "Running Session",
+            "description": "Trote por las playas de Cartagena",
+            "distance": "12k",
+            "time": "1:15h",
+            "city": "Cartagena",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Running+Session+2"
+          },
+          {
+            "title": "Running Session",
+            "description": "Carrera en la avenida El Poblado",
+            "distance": "8k",
+            "time": "0:55h",
+            "city": "Medellín",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Running+Session+3"
+          },
+          {
+            "title": "Running Session",
+            "description": "Trote en el parque Simón Bolívar",
+            "distance": "9k",
+            "time": "1:00h",
+            "city": "Bogotá",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Running+Session+4"
+          },
+          {
+            "title": "Running Session",
+            "description": "Trote alrededor del centro histórico",
+            "distance": "11k",
+            "time": "1:10h",
+            "city": "Cartagena",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Running+Session+5"
+          }
+        ],
+        "swimming": [
+          {
+            "title": "Swimming Session",
+            "description": "Sesión en la piscina olímpica",
+            "distance": "2k",
+            "time": "0:40h",
+            "city": "Bogotá",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Swimming+Session+1"
+          },
+          {
+            "title": "Swimming Session",
+            "description": "Nado en la bahía de Cartagena",
+            "distance": "3k",
+            "time": "0:55h",
+            "city": "Cartagena",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Swimming+Session+2"
+          },
+          {
+            "title": "Swimming Session",
+            "description": "Entrenamiento en aguas abiertas",
+            "distance": "2.5k",
+            "time": "0:50h",
+            "city": "Santa Marta",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Swimming+Session+3"
+          },
+          {
+            "title": "Swimming Session",
+            "description": "Nado en la piscina semi-olímpica",
+            "distance": "1.5k",
+            "time": "0:35h",
+            "city": "Medellín",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Swimming+Session+4"
+          },
+          {
+            "title": "Swimming Session",
+            "description": "Sesión de resistencia",
+            "distance": "3.5k",
+            "time": "1:00h",
+            "city": "Bogotá",
+            "imageUrl": "https://via.placeholder.com/300x200?text=Swimming+Session+5"
+          }
+        ]
+      }
+    }
+  }  
