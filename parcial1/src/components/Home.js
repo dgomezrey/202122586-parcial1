@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import data from '../data/data.json';
+import data from '../data//data.json'; // Importamos los datos del archivo JSON
 
 const Home = () => {
   const [user, setUser] = useState({});
@@ -31,13 +31,13 @@ const Home = () => {
     setBestTimes(calculateBestTimes(data.user.sessions));
   }, []);
 
-  const renderCards = (sessionData) => {
+  const renderCards = (sessionData, imageUrl) => {
     return (
       <Row>
         <Col xs={12} md={6}>
           {sessionData.slice(0, 5).map((session, index) => (
             <Card className="mb-3 text-white" key={index}>
-              <Card.Img src={session.imageUrl} alt={session.title} />
+              <Card.Img src={imageUrl} alt={session.title} />
               <Card.ImgOverlay className="d-flex flex-column justify-content-end p-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                 <Card.Title>{session.title}</Card.Title>
                 <Card.Text>{session.description}</Card.Text>
@@ -49,7 +49,7 @@ const Home = () => {
         <Col xs={12} md={6}>
           {sessionData.slice(5, 10).map((session, index) => (
             <Card className="mb-3 text-white" key={index}>
-              <Card.Img src={session.imageUrl} alt={session.title} />
+              <Card.Img src={imageUrl} alt={session.title} />
               <Card.ImgOverlay className="d-flex flex-column justify-content-end p-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                 <Card.Title>{session.title}</Card.Title>
                 <Card.Text>{session.description}</Card.Text>
@@ -69,15 +69,15 @@ const Home = () => {
         <Row className="mb-4">
           <Col>
             <h3 className="text-center">Cycling</h3>
-            {renderCards(user.sessions?.cycling || [])}
+            {renderCards(user.sessions?.cycling || [], user.images?.cycling)}
           </Col>
           <Col>
             <h3 className="text-center">Running</h3>
-            {renderCards(user.sessions?.running || [])}
+            {renderCards(user.sessions?.running || [], user.images?.running)}
           </Col>
           <Col>
             <h3 className="text-center">Swimming</h3>
-            {renderCards(user.sessions?.swimming || [])}
+            {renderCards(user.sessions?.swimming || [], user.images?.swimming)}
           </Col>
         </Row>
       </div>
