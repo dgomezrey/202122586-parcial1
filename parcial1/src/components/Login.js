@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, InputGroup, Alert } from 'react-bootstrap';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Inicializar navigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,9 +26,13 @@ const Login = () => {
     }
 
     setError('');
-    // Lógica para el envío de los datos
+    
+    // Simular login exitoso
     console.log('Correo:', email);
     console.log('Contraseña:', password);
+
+    // Redirigir al usuario a /home
+    navigate('/home');
   };
 
   const toggleShowPassword = () => {

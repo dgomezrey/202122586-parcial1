@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Modal, Button } from 'react-bootstrap';
 import { FaRunning, FaSwimmer, FaBiking } from 'react-icons/fa'; 
 import data from '../data/data.json'; 
 
 const Home = () => {
   const [user, setUser] = useState({});
   const [bestTimes, setBestTimes] = useState({});
+  const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
+  const [selectedSession, setSelectedSession] = useState(null); // Sesión seleccionada para mostrar en el modal
+  const [modalImage, setModalImage] = useState(""); // Imagen seleccionada para el modal
 
   const convertTimeToMinutes = (time) => {
     const [hours, minutes] = time.split(":");
@@ -29,16 +32,23 @@ const Home = () => {
     setBestTimes(calculateBestTimes(data.user.sessions));
   }, []);
 
+  // Función para abrir el modal con la información de la tarjeta seleccionada
+  const handleCardClick = (session, categoryImage) => {
+    setSelectedSession(session);
+    setModalImage(categoryImage); // Establecer la imagen según la categoría
+    setShowModal(true);
+  };
+
   const renderCards = (sessionData, imageUrl) => {
     return (
       <Row>
         <Col xs={12} md={6}>
           {sessionData.slice(0, 5).map((session, index) => (
-            <Card className="mb-3 text-white" key={index} style={{ minHeight: '125px' }}>
+            <Card className="mb-3 text-white" key={index} style={{ minHeight: '140px' }} onClick={() => handleCardClick(session, imageUrl)}>
               <Card.Img 
                 src={imageUrl} 
                 alt={session.title} 
-                style={{ height: '125px', objectFit: 'cover' }}  // Reducimos la altura de la imagen a 125px
+                style={{ height: '140px', objectFit: 'cover' }} 
               />
               <Card.ImgOverlay className="d-flex flex-column justify-content-end p-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                 <Card.Title>{session.title}</Card.Title>
@@ -50,11 +60,11 @@ const Home = () => {
         </Col>
         <Col xs={12} md={6}>
           {sessionData.slice(5, 10).map((session, index) => (
-            <Card className="mb-3 text-white" key={index} style={{ minHeight: '125px' }}>
+            <Card className="mb-3 text-white" key={index} style={{ minHeight: '140px' }} onClick={() => handleCardClick(session, imageUrl)}>
               <Card.Img 
                 src={imageUrl} 
                 alt={session.title} 
-                style={{ height: '125px', objectFit: 'cover' }}  // Reducimos la altura de la imagen a 125px
+                style={{ height: '140px', objectFit: 'cover' }} 
               />
               <Card.ImgOverlay className="d-flex flex-column justify-content-end p-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                 <Card.Title>{session.title}</Card.Title>
@@ -87,6 +97,33 @@ const Home = () => {
           </Col>
         </Row>
       </div>
+
+      {/* Modal para ver el detalle del ejercicio */}
+      <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" centered>
+        {selectedSession && (
+          <>
+            <Modal.Body className="p-0">
+              <Card className="text-white">
+                <Card.Img 
+                  src={modalImage} // Mostrar la imagen correcta del modal
+                  alt={selectedSession.title} 
+                  style={{ height: 'auto', width: '100%' }}
+                />
+                <Card.ImgOverlay className="d-flex flex-column justify-content-end p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+                  <Card.Title>{selectedSession.title}</Card.Title>
+                  <Card.Text>{selectedSession.description}</Card.Text>
+                  <Card.Text>{selectedSession.distance} - {selectedSession.time}</Card.Text>
+                </Card.ImgOverlay>
+              </Card>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={() => setShowModal(false)} style={{ backgroundColor: '#007bff' }}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </>
+        )}
+      </Modal>
 
       {/* Sección de los mejores tiempos del usuario */}
       <footer className="bg-teal text-white py-3 mt-auto" style={{ backgroundColor: '#006d77', color: '#fff' }}>
