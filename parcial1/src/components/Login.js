@@ -1,37 +1,29 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, InputGroup, Alert } from 'react-bootstrap';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Inicializar navigate
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validaciones
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       setError('Por favor, ingresa un correo válido.');
       return;
     }
-
     if (password.length < 8) {
       setError('La contraseña debe tener al menos 8 caracteres.');
       return;
     }
-
     setError('');
-    
-    // Simular login exitoso
     console.log('Correo:', email);
     console.log('Contraseña:', password);
-
-    // Redirigir al usuario a /home
     navigate('/home');
   };
 

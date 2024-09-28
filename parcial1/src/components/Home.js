@@ -6,9 +6,9 @@ import data from '../data/data.json';
 const Home = () => {
   const [user, setUser] = useState({});
   const [bestTimes, setBestTimes] = useState({});
-  const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
-  const [selectedSession, setSelectedSession] = useState(null); // Sesión seleccionada para mostrar en el modal
-  const [modalImage, setModalImage] = useState(""); // Imagen seleccionada para el modal
+  const [showModal, setShowModal] = useState(false);
+  const [selectedSession, setSelectedSession] = useState(null);
+  const [modalImage, setModalImage] = useState("");
 
   const convertTimeToMinutes = (time) => {
     const [hours, minutes] = time.split(":");
@@ -32,10 +32,9 @@ const Home = () => {
     setBestTimes(calculateBestTimes(data.user.sessions));
   }, []);
 
-  // Función para abrir el modal con la información de la tarjeta seleccionada
   const handleCardClick = (session, categoryImage) => {
     setSelectedSession(session);
-    setModalImage(categoryImage); // Establecer la imagen según la categoría
+    setModalImage(categoryImage);
     setShowModal(true);
   };
 
@@ -80,7 +79,6 @@ const Home = () => {
 
   return (
     <Container fluid className="d-flex flex-column justify-content-between" style={{ height: '100vh', padding: '1rem' }}>
-      {/* Sección central con las tarjetas de sesiones */}
       <div className="flex-grow-1">
         <Row className="mb-4">
           <Col>
@@ -98,14 +96,13 @@ const Home = () => {
         </Row>
       </div>
 
-      {/* Modal para ver el detalle del ejercicio */}
       <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" centered>
         {selectedSession && (
           <>
             <Modal.Body className="p-0">
               <Card className="text-white">
                 <Card.Img 
-                  src={modalImage} // Mostrar la imagen correcta del modal
+                  src={modalImage}
                   alt={selectedSession.title} 
                   style={{ height: 'auto', width: '100%' }}
                 />
@@ -125,7 +122,6 @@ const Home = () => {
         )}
       </Modal>
 
-      {/* Sección de los mejores tiempos del usuario */}
       <footer className="bg-teal text-white py-3 mt-auto" style={{ backgroundColor: '#006d77', color: '#fff' }}>
         <Row className="justify-content-center align-items-center">
           <Col xs="auto" className="text-center">
