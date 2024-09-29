@@ -1,0 +1,12 @@
+{
+  "login.title": "Log in",
+  "login.email": "Email",
+  "login.password": "Password",
+  "login.submit": "Log In",
+  "login.invalidEmail": "Please enter a valid email address.",
+  "login.invalidPassword": "The password must be at least 8 characters.",
+  "home.cycling": "Cycling",
+  "home.running": "Running",
+  "home.swimming": "Swimming",
+  "home.close": "Close"
+}

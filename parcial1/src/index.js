@@ -1,14 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { IntlProvider } from "react-intl";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
+import EnMessages from "./intl/en.json";
+import EsMessages from "./intl/es.json";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const language = navigator.language.split(/[-_]/)[0];
+
+const messages = {
+  en: EnMessages,
+  es: EsMessages,
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <IntlProvider locale={language} messages={messages[language]}>
+      <App />
+    </IntlProvider>
   </React.StrictMode>
 );
 

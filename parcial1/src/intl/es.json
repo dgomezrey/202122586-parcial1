@@ -1,0 +1,12 @@
+{
+  "login.title": "Iniciar sesión",
+  "login.email": "Correo electrónico",
+  "login.password": "Contraseña",
+  "login.submit": "Ingresar",
+  "login.invalidEmail": "Por favor, ingresa un correo válido.",
+  "login.invalidPassword": "La contraseña debe tener al menos 8 caracteres.",
+  "home.cycling": "Ciclismo",
+  "home.running": "Carrera",
+  "home.swimming": "Natación",
+  "home.close": "Cerrar"
+}

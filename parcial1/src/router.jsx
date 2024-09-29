@@ -8,23 +8,21 @@ const Layout = () => {
       <Outlet />
     </div>
   );
-}
+};
 
 export const router = createBrowserRouter([
-    {
-
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
         path: "/",
-        element: <Layout />,
-        children: [
-            {
-                path: "/",
-                element: <Login />
-            },
-            {
-                path: "/home",
-                element: <Home />
-            }
-        ]
-
-    }
+        element: <Login />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+    ],
+  },
 ]);
